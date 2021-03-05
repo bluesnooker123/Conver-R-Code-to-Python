@@ -1,0 +1,6 @@
+library(RODBC)
+library(mlogit)
+
+y <-read.csv('D:/greyhounds/sample.csv',header=TRUE, sep=",")
+x <-mlogit.data(y,choice="win",shape="long", id.var="uri",alt.var="r_box")
+summary(mlogit(win ~ sp + xp + tim - 1,data=x))
